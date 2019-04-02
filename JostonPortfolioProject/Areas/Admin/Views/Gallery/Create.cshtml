@@ -1,0 +1,28 @@
+﻿@model JostonPortfolioProject.Models.Gallery
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Gallery Create</h2>
+
+<form method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(x => x.Tag)
+        @Html.TextBoxFor(x => x.Tag, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Tag, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Photo)
+        @Html.TextBoxFor(x => x.Photo, new { @class = "form-control", type = "file", accept = "image/*" })
+        @Html.ValidationMessageFor(x => x.Photo, null, new { @class = "text-danger" })
+    </div>
+
+    <input type="submit" class="btn btn-success" value="Create" />
+</form>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryvalunobtrusive")    
+}

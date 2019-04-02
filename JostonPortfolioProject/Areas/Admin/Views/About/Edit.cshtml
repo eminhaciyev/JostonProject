@@ -1,0 +1,40 @@
+﻿@model JostonPortfolioProject.Models.About
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+<div class="container">
+    <div class="row">
+        <form method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(e => e.Id)
+            <div class="form-group">
+                @Html.LabelFor(x => x.Title)
+                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Content)
+                @Html.TextBoxFor(x => x.Content, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Content, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Photo)
+                @Html.TextBoxFor(x => x.Photo, new { @class = "form-control", type = "file", accept = "image/*" })
+                @Html.ValidationMessageFor(x => x.Photo, null, new { @class = "text-danger" })
+            </div>
+
+            <input type="submit" class="btn btn-success" value="Edit" />
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryvalunobtrusive")
+}

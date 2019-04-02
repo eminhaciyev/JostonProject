@@ -1,0 +1,42 @@
+﻿@model IEnumerable<JostonPortfolioProject.Models.About>
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ var id = 0; }
+                @foreach (var about in Model)
+                {
+                <tr>
+                    <th scope="row">@(++id)</th>
+                    <td>@about.Title</td>
+                    <td>@about.Content</td>
+                    <td><img src="~/Uploads/@about.Image" width="50" /></td>
+                    <td>
+                        <a href="~/Admin/About/Edit/@about.Id" class="btn btn-info">Edit</a>
+                    </td>
+                    <td>
+                        <a href="~/Admin/About/Delete/@about.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                }
+
+
+            </tbody>
+        </table>
+        <a href="~/Admin/About/Create" class="btn btn-success">Create</a>
+    </div>
+</div>
+

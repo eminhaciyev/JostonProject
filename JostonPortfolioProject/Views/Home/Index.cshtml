@@ -1,0 +1,205 @@
+﻿@model JostonPortfolioProject.Models.ViewModel.ViewModelClasses
+
+
+<section class="cid-r7ji6gAv8F" id="header1-3">
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(214, 214, 214);">
+    </div>
+    <div class="container text-center" data-stellar-background-ratio=".5">
+        <div class="row slider-wrapper">
+            <div class="col-md-12">
+                <div class="slider-text  slider-text-two">
+                    <h2 class="mbr-section-title mbr-fonts-style mbr-bold align-center display-1">
+                        J'Ostin Portfolio
+                    </h2>
+                    <h1 class="mbr-text mbr-fonts-style align-center display-7">
+                        HTML5 Bootstrap Portfolio Template
+                    </h1>
+                    <h4></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mbr-gallery mbr-slider-carousel cid-r7jjMep0h1" id="gallery1-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-10">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="pt-5">
+            <!-- Filter -->
+            <div class="mbr-gallery-filter container gallery-filter-active">
+                <ul buttons="0">
+                    <li class="mbr-gallery-filter-all">
+                        <a class="btn btn-md btn-white-outline active display-7" href="#">  All   </a>
+                    </li>
+                </ul>
+            </div><!-- Gallery -->
+            <div class="mbr-gallery-row">
+                <div class="mbr-gallery-layout-default">
+                    <div>
+                        <div>
+
+                            @for (var i = 0; i < Model.Gallery.Count(); i++)
+                            {
+                                <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false"
+                                     data-tags="@Model.Gallery.ElementAt(i).Tag">
+                                    <div href="#lb-gallery1-4" data-slide-to="@i" data-toggle="modal">
+                                        <img src="~/Uploads/@Model.Gallery.ElementAt(i).Image" alt=""
+                                             title=""><span class="icon-focus"></span>
+                                    </div>
+                                </div>
+                            }
+
+
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div><!-- Lightbox -->
+            <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1"
+                 data-keyboard="true" data-interval="false" id="lb-gallery1-4">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="carousel-inner">
+                                @for (int i = 0; i < Model.Gallery.Count(); i++)
+                                {
+                                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                                        <img src="~/Uploads/@Model.Gallery.ElementAt(i).Image" alt=""
+                                             title="">
+                                    </div>
+
+                                }
+                            </div><a class="carousel-control carousel-control-prev" role="button" data-slide="prev"
+                                     href="#lb-gallery1-4">
+                                <span class="mbri-left mbr-iconfont"
+                                      aria-hidden="true"></span><span class="sr-only">Previous</span>
+                            </a><a class="carousel-control carousel-control-next" role="button" data-slide="next"
+                                   href="#lb-gallery1-4">
+                                <span class="mbri-right mbr-iconfont"
+                                      aria-hidden="true"></span><span class="sr-only">Next</span>
+                            </a><a class="close"
+                                   href="#" role="button" data-dismiss="modal"><span class="sr-only">Close</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@for (int i = 0; i < Model.About.Count(); i++)
+{
+    <section class="@(i == 1 ? "cid-r7nlOsAfjp" : "cid-r7jn6Jzcbs")" id="features@(i+5) -@(i == 0 ? "a" : "c")">
+        <div class="container-fluid">
+            <div class="row align-items-center content-row">
+                <div class="col-lg-6 wrap-block">
+                    <h2 class="mbr-section-title mbr-fonts-style mbr-light @(i == 1 ? "mbr-white" : "") display-2">@Model.About.ElementAt(i).Title</h2>
+                    <h3 class="mbr-text mbr-fonts-style mbr-light display-7">
+                        @Model.About.ElementAt(i).Content
+                    </h3>
+                    @if (i == 1)
+                    {
+                        <p class="mbr-text mbr-fonts-style mbr-light mbr-white display-7">
+                            @Model.About.ElementAt(i).Content
+                        </p>
+                    }
+                </div>
+                <div class="col-lg-6 photo-split">
+                    <img src="~/Uploads/@Model.About.ElementAt(i).Image" alt="" title="">
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<section class="cid-r7jkkuPUfT" id="pricing-tables1-7">
+    <div class="container">
+        <div class="media-container-row">
+
+            @foreach (var events in Model.Event)
+            {
+            <div class="col-12 col-md-5 col-lg-3 justify-content-center">
+                <div class="price-item text-center">
+                    <div>
+                        <h4 class="title mbr-fonts-style mbr-light display-5">@events.Title</h4>
+                    </div>
+                    <div class="price-tage">
+                        <h3 class="mbr-fonts-style costs mbr-light display-2">$@events.Price</h3>
+                        <span class="mbr-fonts-style costs-title display-4">@events.SubTitle</span>
+                    </div>
+                    <ul class="table-content mbr-fonts-style display-7">
+                        <li>@events.Hours</li>
+                        <li>
+                            @events.HowManyPhoto
+                        </li>
+                        <li>@events.Content</li>
+                    </ul>
+                </div>
+            </div>
+            }
+
+
+            
+
+
+        </div>
+    </div>
+</section>
+<section class="cid-r7jn8H6HBB" id="form2-b">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="form-1 col-md-8 col-sm-12" data-form-type="formoid">
+                <h2 class="mbr-fonts-style mbr-section-heading display-2">
+                    Get in touch
+                </h2>
+                <div data-form-alert="" hidden="">I'll get back to you soon!</div>
+                <form class="mbr-form" action="https://mobirise.com/" method="post"
+                      data-form-title="My Mobirise Form">
+                    <input type="hidden" name="email" data-form-email="true"
+                           value="iyJbJmIoQDJoVmAEPnsUZIraVka9aUg3khO63Q6+BZQP1U6zdx2YmaLAyI/zN0iBF/y9ZT8lIzF9P1U6vt29/WiApiBtWVZG9GYCc/zwpZ17Mt8+VctliIztr7jqsF9m">
+                    <div class="row input-main">
+                        <div class="col-md-6 input-wrap" data-for="name">
+                            <input type="text" class="field display-7" name="name" data-form-field="Name"
+                                   placeholder="Name" required="" id="name-form2-b">
+                        </div>
+                        <div class="col-md-6 input-wrap" data-for="email">
+                            <input type="email" class="field display-7" name="email" data-form-field="Email"
+                                   placeholder="Email" required="" id="email-form2-b">
+                        </div>
+                    </div>
+                    <div class="row input-main">
+                        <div class="col-md-6 input-wrap" data-for="subject">
+                        </div>
+                    </div>
+                    <div class="form-group" data-for="message">
+                        <textarea type="text" class="form-control display-7" name="message" rows="7"
+                                  placeholder="Message" data-form-field="Message" id="message-form2-b"></textarea>
+                    </div>
+                    <span class="input-group-btn">
+                        <button href="#" type="submit"
+                                class="btn btn-form btn-primary display-4">
+                            SEND ME A NOTE
+                        </button>
+                    </span>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="cid-r7jklPWitD" id="footer2-8">
+    <div class="container-fluid text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-12">
+                <h3 class="inner-text mbr-fonts-style content-text display-7">
+                    Bootstrap Portfolio Template. Powered
+                    by <a href="#" class="text-secondary">Mobirise.com</a>
+                </h3>
+            </div>
+        </div>
+    </div>
+</section>

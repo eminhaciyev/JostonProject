@@ -1,0 +1,57 @@
+﻿@model JostonPortfolioProject.Models.Event
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <form method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(e => e.Id)
+            <div class="form-group">
+                @Html.LabelFor(x => x.Title)
+                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Price)
+                @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.SubTitle)
+                @Html.TextBoxFor(x => x.SubTitle, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.SubTitle, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Hours)
+                @Html.TextBoxFor(x => x.Hours, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Hours, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.HowManyPhoto)
+                @Html.TextBoxFor(x => x.HowManyPhoto, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.HowManyPhoto, null, new { @class = "text-danger" })
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Content)
+                @Html.TextBoxFor(x => x.Content, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Content, null, new { @class = "text-danger" })
+            </div>
+            <input type="submit" class="btn btn-success" value="Edit" />
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryvalunobtrusive")
+}

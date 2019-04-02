@@ -1,0 +1,43 @@
+﻿@model IEnumerable<JostonPortfolioProject.Models.Gallery>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Tag</th>
+                    <th scope="col">Photo</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @{ var id = 0; }
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <th scope="row">@(++id)</th>
+                        <td>@item.Tag</td>
+                        <td><img src="~/Uploads/@item.Image" width="50" /></td>
+                        <td>
+                            <a href="~/Admin/Gallery/Edit/@item.Id" class="btn btn-info">Edit</a>
+                        </td>
+                        <td>
+                            <a href="~/Admin/Gallery/Delete/@item.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+        <a href="~/Admin/Gallery/Create" class="btn btn-success">Create</a>
+    </div>
+</div>

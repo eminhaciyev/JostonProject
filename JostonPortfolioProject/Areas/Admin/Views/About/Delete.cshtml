@@ -1,0 +1,34 @@
+﻿@model JostonPortfolioProject.Models.About
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row">
+            <div class="alert alert-warning" role="alert">
+                Siz bu postu silmək istədiyinizə əminsiniz???
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+                <img src="~/Uploads/@Model.Image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">@Model.Title</h3>
+                    <h5 class="card-title">@Model.Content</h5>
+                </div>
+                <input type="submit" class="btn btn-success" value="Delete" />
+            </div>
+        </div>
+    </div>
+</form>
+ 
